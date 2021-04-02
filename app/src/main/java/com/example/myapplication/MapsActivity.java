@@ -6,7 +6,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,11 +17,15 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,12 +40,17 @@ import org.w3c.dom.Document;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends AppCompatActivity implements
         GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnMyLocationClickListener,
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback {
+
+        AppLocationService appLocationService;
+
+        TextView tvAddress;
 
 /**
  * Request code for location permission request.
@@ -55,19 +67,73 @@ private boolean permissionDenied = false;
 
 private GoogleMap map;
 
+        View mapView;
+
+        SearchView searchView;
+
+        static final String TAG = "MapHelper";
+
 @Override
 protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+
+
+        //tvAddress = (TextView) findViewById(R.id.tvAddress);
+
+
+
         SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapView = mapFragment.getView();
         mapFragment.getMapAsync(this);
+
         }
 
 @Override
 public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        //map.setPadding(0,100,0,0);
+        new Handler().post(new Runnable() {
+                @Override
+                public void run() {
+                        map.setPadding(0,150,0,0);
+                }
+        });
+
+        searchView = findViewById(R.id.sv_location);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                        String location = searchView.getQuery().toString();
+                        List<Address> addressList = null;
+                        if (location !=null || !location.equals("") || map != null){
+                                Geocoder geocoder = new Geocoder(MapsActivity.this);
+                                try {
+                                        addressList = geocoder.getFromLocationName(location, 1);
+                                } catch (IOException e){
+                                        e.printStackTrace();
+                                }
+                                if (addressList == null){
+                                        Log.d(TAG,"Latitude and longitude not found");
+                                }else {
+                                        Address address = addressList.get(0);
+                                        LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                                        map.addMarker(new MarkerOptions().position(latLng).title(location));
+                                        map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                                }
+                        }
+                        return false;
+                }
+
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                        return false;
+                }
+        });
+
         map.setOnMyLocationButtonClickListener(this);
         map.setOnMyLocationClickListener(this);
         enableMyLocation();
@@ -82,6 +148,16 @@ private void enableMyLocation() {
         if (map != null) {
         map.setMyLocationEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(true);
+//                View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
+//                // and next place it, on bottom right (as Google Maps app)
+//                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+//                        locationButton.getLayoutParams();
+//                // position on right bottom
+//                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
+//                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+//                layoutParams.setMargins(0, 0, 30, 30);
+        //getAddressForLocation(this,)
+
         }
         } else {
         // Permission to access the location is missing. Show rationale and request permission
@@ -100,8 +176,25 @@ public boolean onMyLocationButtonClick() {
 
 @Override
 public void onMyLocationClick(@NonNull Location location) {
-        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+        String StreetName = null;
+        Geocoder gcd = new Geocoder(getBaseContext(), Locale.getDefault());
+        List<Address> addresses;
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        int maxResults = 1;
+        try {
+                addresses = gcd.getFromLocation(location.getLatitude(), location
+                        .getLongitude(), 1);
+                if (addresses.size() > 0)
+                        StreetName = addresses.get(0).getThoroughfare();
+                String s = /*longitude + "\n" + latitude +
+                        "\n\n*/"My Currrent Street is: " + StreetName;
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+
         }
+}
 
 @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -137,4 +230,62 @@ private void showMissingPermissionError() {
         .newInstance(true).show(getSupportFragmentManager(), "dialog");
         }
 
+
+        public Address getAddressForLocation(Context context, Location location) throws IOException {
+
+                if (location == null) {
+                        return null;
+                }
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+                int maxResults = 1;
+
+                Geocoder gc = new Geocoder(context, Locale.getDefault());
+                List<Address> addresses = gc.getFromLocation(latitude, longitude, maxResults);
+
+                if (addresses.size() == 1) {
+                        return addresses.get(0);
+                } else {
+                        return null;
+                }
         }
+        public void showSettingsAlert() {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                        MapsActivity.this);
+                alertDialog.setTitle("SETTINGS");
+                alertDialog.setMessage("Enable Location Provider! Go to settings menu?");
+                alertDialog.setPositiveButton("Settings",
+                        new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(
+                                                Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                        MapsActivity.this.startActivity(intent);
+                                }
+                        });
+                alertDialog.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                }
+                        });
+                alertDialog.show();
+        }
+        private class GeocoderHandler extends Handler {
+                @Override
+                public void handleMessage(Message message) {
+                        String locationAddress;
+                        switch (message.what) {
+                                case 1:
+                                        Bundle bundle = message.getData();
+                                        locationAddress = bundle.getString("address");
+                                        break;
+                                default:
+                                        locationAddress = null;
+                        }
+                        tvAddress.setText(locationAddress);
+                }
+        }
+
+}
+
+
