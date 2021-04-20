@@ -148,16 +148,6 @@ private void enableMyLocation() {
         if (map != null) {
         map.setMyLocationEnabled(true);
         map.getUiSettings().setMyLocationButtonEnabled(true);
-//                View locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-//                // and next place it, on bottom right (as Google Maps app)
-//                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
-//                        locationButton.getLayoutParams();
-//                // position on right bottom
-//                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
-//                layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-//                layoutParams.setMargins(0, 0, 30, 30);
-        //getAddressForLocation(this,)
-
         }
         } else {
         // Permission to access the location is missing. Show rationale and request permission
@@ -189,6 +179,8 @@ public void onMyLocationClick(@NonNull Location location) {
                         StreetName = addresses.get(0).getThoroughfare();
                 String s = /*longitude + "\n" + latitude +
                         "\n\n*/"My Currrent Street is: " + StreetName;
+                Intent goToHouse = new Intent(getApplicationContext(), Housesbeta.class);
+                startActivity(goToHouse);
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
                 //Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
         } catch (Exception e) {
