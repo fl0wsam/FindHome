@@ -8,7 +8,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -34,19 +36,36 @@ import java.io.IOException;
 
 public class NewHome extends AppCompatActivity {
 
+    private int STORAGE_PERMISSION_CODE = 1;
+
     private static final String TAG = "NewHome" ;
     Button ch,up;
     ImageView img;
-    StorageReference mStorageRef;
     public Uri imguri;
 
     private static final int PERMISSION_REQUEST_CODE = 100;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    // Create a storage reference from our app
+    StorageReference storageRef = storage.getReference();
+
+    // Create a reference to "mountains.jpg"
+    StorageReference mountainsRef = storageRef.child("mountains.jpg");
+
+    // Create a reference to 'images/mountains.jpg'
+    StorageReference mountainImagesRef = storageRef.child("images/mountains.jpg");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_home);
-        mStorageRef = FirebaseStorage.getInstance().getReference("Images");
+
+        // While the file names are the same, the references point to different files
+        mountainsRef.getName().equals(mountainImagesRef.getName());    // true
+        mountainsRef.getPath().equals(mountainImagesRef.getPath());    // false
+
 
         
         ch = (Button)findViewById(R.id.btnchoose);
@@ -57,14 +76,13 @@ public class NewHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (checkPermission()) {
-                        try {
-                            FileChooser();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                    }
+                if (ContextCompat.checkSelfPermission(NewHome.this,
+                        Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(NewHome.this, "You have already granted this permission!",
+                            Toast.LENGTH_SHORT).show();
+                    FileChooser();
                 } else {
-                    requestPermission(); // Code for permission
+                    requestStoragePermission();
                 }
 
 
@@ -75,41 +93,54 @@ public class NewHome extends AppCompatActivity {
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fileuploader();
+                if (ContextCompat.checkSelfPermission(NewHome.this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(NewHome.this, "You have already granted this permission!",
+                            Toast.LENGTH_SHORT).show();
+                    Fileuploader();
+                } else {
+                    requestStoragePermission();
+                }
             }
         });
 
 
     }
 
-
-    private boolean checkPermission() {
-        int result = ContextCompat.checkSelfPermission(NewHome.this, Manifest.permission.READ_EXTERNAL_STORAGE);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission needed")
+                    .setMessage("This permission is needed because of this and that")
+                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(NewHome.this,
+                                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
         } else {
-            return false;
-        }
-    }
-
-    private void requestPermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(NewHome.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            Toast.makeText(NewHome.this, "Write External Storage permission allows us to save files. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
-        } else {
-            ActivityCompat.requestPermissions(NewHome.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.e("NewHome", "Permission Granted, Now you can use local drive .");
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == STORAGE_PERMISSION_CODE)  {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Permission GRANTED", Toast.LENGTH_SHORT).show();
             } else {
-                Log.e("NewHome", "Permission Denied, You cannot use local drive .");
+                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
             }
-            break;
         }
     }
 
@@ -123,17 +154,21 @@ public class NewHome extends AppCompatActivity {
 
     private void Fileuploader() {
 
-        StorageReference Ref = mStorageRef.child(System.currentTimeMillis()+"."+getExtension(imguri));
+        StorageReference riversRef = storageRef.child("images/"+imguri.getLastPathSegment());
+        UploadTask uploadTask = riversRef.putFile(imguri);
 
-        Ref.putFile(imguri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+// Register observers to listen for when the download is done or if it fails
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle unsuccessful uploads
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(NewHome.this,"Image Uploaded succesfully",Toast.LENGTH_LONG).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //
+                taskSnapshot.getMetadata();
+                // contains file metadata such as size, content-type, etc.
+                // ...
             }
         });
 
@@ -142,7 +177,8 @@ public class NewHome extends AppCompatActivity {
     }
 
     private void FileChooser() {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
         startActivityForResult(intent,1);
 
@@ -157,12 +193,11 @@ public class NewHome extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imguri);
                 // Log.d(TAG, String.valueOf(bitmap));
-                img.setImageBitmap(bitmap);
+                img.setImageURI(imguri);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             Log.d("NewHome",imguri.toString());
-            img.setImageURI(imguri);
         }
     }
 }

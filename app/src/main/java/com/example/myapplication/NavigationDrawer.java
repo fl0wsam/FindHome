@@ -164,7 +164,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
 
             Log.d("About us", "Start About us Activity");
-            //intent = new Intent(NavigationDrawer.this, AboutActivity.class);
+            intent = new Intent(NavigationDrawer.this, NewHome.class);
             startActivity(intent);
 
         }

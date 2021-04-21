@@ -410,4 +410,11 @@
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="title_activity_aboutus">AboutusActivity</string>
     <string name="title_activity_about">AboutActivity</string>
+    <string name="first_time_users_click_on_create_user">First time users,click on Create User</string>
+    <string name="welcome_to_findhome">Welcome to FindHome</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="or_login_with_google">Or Login With Google</string>
+    <string name="login">Login</string>
+    <string name="create_user">Create User</string>
 </resources>

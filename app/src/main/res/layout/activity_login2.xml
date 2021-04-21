@@ -8,13 +8,12 @@
         android:id="@+id/createAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/Differentlogin"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
-        android:text="Welcome to FindHome"
+        android:text="@string/welcome_to_findhome"
         android:textColor="#FF9800"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -24,24 +23,20 @@
         android:layout_below="@+id/createAccount"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:text="First time users,click on Create User"
+        android:text="@string/first_time_users_click_on_create_user"
         android:textColor="#FF9800"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
 
     <com.alimuzaffar.lib.widgets.AnimatedEditText
         android:id="@+id/edit_text_password"
-        android:layout_width="match_parent"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_text_email"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="-7dp"
         android:layout_marginTop="61dp"
-        android:layout_marginEnd="-12dp"
         android:background="@android:color/white"
-        android:hint="Enter your password"
+        android:hint="@string/enter_your_password"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
         android:padding="14dp"
@@ -49,16 +44,16 @@
         android:textColorHint="#AEAEAE"
         android:textSize="15.3sp" />
 
+
     <com.alimuzaffar.lib.widgets.AnimatedEditText
         android:id="@+id/edit_text_email"
-        android:layout_width="match_parent"
+        android:layout_width="339dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/createAccount1"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-4dp"
-        android:layout_marginTop="51dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="47dp"
         android:background="@android:color/white"
-        android:hint="Enter your email"
+        android:hint="@string/enter_your_email"
         android:inputType="textEmailAddress"
         android:nextFocusDown="@+id/edit_text_password"
         android:padding="14dp"
@@ -71,13 +66,19 @@
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/loginbutton"
-        android:layout_alignEnd="@+id/createAccount1"
         android:layout_alignBottom="@+id/loginbutton"
-        android:layout_marginLeft="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginLeft="61dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/loginbutton"
+        android:layout_toRightOf="@+id/loginbutton"
         android:background="#FF9800"
-        android:text="Create User"
+        android:text="@string/create_user"
         android:textColor="@android:color/white" />
-
 
     <TextView
         android:id="@+id/loginTV"
@@ -86,20 +87,22 @@
         android:layout_above="@+id/sign_in_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="19dp"
-        android:text="Or Login With Google"
+        android:text="@string/or_login_with_google"
         android:textColor="#FF9800"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/loginbutton"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/loginTV"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="32dp"
-        android:layout_toStartOf="@+id/createbutton"
         android:background="#FF9800"
-        android:text="Login"
+        android:text="@string/login"
         android:textColor="@android:color/white" />
 
     <com.google.android.gms.common.SignInButton

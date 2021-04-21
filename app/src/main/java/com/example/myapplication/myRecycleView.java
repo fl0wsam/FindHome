@@ -86,7 +86,7 @@ public class myRecycleView extends Fragment {
         Log.d("Task1", "Oncreateview function set the adapter to recycleview");
         // use this setting to improve th performance if you know that changes
         // in content donot change the size of recycle view
-        //mRecycleView.setHasFixedSize(true);
+        mRecycleView.setHasFixedSize(true);
         // use a linear layout manager to specify how the items appear in the list
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         Log.d("Task1", "Oncreateview function new linearlayout manager");
