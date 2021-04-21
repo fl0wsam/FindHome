@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                             Toast.LENGTH_LONG).show();
                                 }
                                 else {
-                                    sharedPreferences = getSharedPreferences("HappyNestLoginDetails", Context.MODE_PRIVATE);
+                                    sharedPreferences = getSharedPreferences("FindHomeLoginDetails", Context.MODE_PRIVATE);
                                     //sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                     //getSharedPreferences("HappyNestLoginDetails", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -187,23 +187,13 @@ public class LoginActivity extends AppCompatActivity {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
-                firebaseAuthWithGoogle(account.getIdToken());
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-            }
 
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             // Successfully signed in
             if (resultCode == ResultCodes.OK) {
                 Log.d("LoginActivity", "onActivityResult: Loggedin succesfully");
-                sharedPreferences = getSharedPreferences("HappyNestLoginDetails", Context.MODE_PRIVATE);
+                sharedPreferences = getSharedPreferences("FindHomeLoginDetails", Context.MODE_PRIVATE);
 
 
                 Intent myIntent = new Intent(LoginActivity.this, NavigationDrawer.class); //Replace MainActivity.class with your launcher class from previous assignments

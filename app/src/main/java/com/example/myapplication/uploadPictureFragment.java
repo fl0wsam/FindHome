@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,8 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,8 +23,9 @@ import androidx.fragment.app.Fragment;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.utils.ObjectUtils;
-import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class uploadPictureFragment extends Fragment {
     ImageView uploadedImage;
     Cloudinary cloudinary;
     String secure_url;
-    happynestdata housedata;
+    FindHomedata housedata;
     ArrayList<String> uploadimagesarray;
     private static OnSuccessPostInCameraUploadFragment onSuccessPostInCameraUploadFragment;
     Button finalPostButton;
@@ -79,6 +79,8 @@ public class uploadPictureFragment extends Fragment {
     private void startUpload(final String filepath)
     {
         AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
+            @SuppressLint("StaticFieldLeak")
+            @NotNull
             protected String doInBackground(String... paths) {
                 try {
                     Log.d("startUpload", "doInBackground: trying to open filepath: ");
@@ -97,7 +99,7 @@ public class uploadPictureFragment extends Fragment {
                     Map result = cloudinary.uploader().upload(openimg, ObjectUtils.emptyMap());
                     Log.d("Success Upload", (String)result.get("secure_url"));
                     secure_url = (String)result.get("secure_url");
-                    uploadimagesarray.add(secure_url);
+                    uploadimagesarray.add("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png");
                     //download
 //                    Picasso.with(getApplicationContext()).
 //                            load("http://res.cloudinary.com/djwozwl0f/image/upload/v1491415725/sample.jpg").
@@ -233,7 +235,7 @@ public class uploadPictureFragment extends Fragment {
         });
 
 
-        housedata = new happynestdata();
+        housedata = new FindHomedata();
         if (housedata.getSize() == 0)
         {
             housedata.setContext(getActivity());
@@ -253,17 +255,20 @@ public class uploadPictureFragment extends Fragment {
                 //Upload pics to firebase
                 dataInUploadPicFrag.put("uploadpiclist",uploadimagesarray);
                 Log.d(TAG, "onClick: The size of uploadpiclist"+uploadimagesarray.size());
-                if(uploadimagesarray.size()>0) {
-                    housedata.addItemToServer(dataInUploadPicFrag);
+
+                housedata.addItemToServer(dataInUploadPicFrag);
                     onSuccessPostInCameraUploadFragment.OnFinalPostClick(dataInUploadPicFrag);
-
-                }
-
-                else{
-
-                    Snackbar snackbar = Snackbar.make(rootView,"Please upload atleast one image",Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
+//                if(uploadimagesarray.size()>0) {
+//                    housedata.addItemToServer(dataInUploadPicFrag);
+//                    onSuccessPostInCameraUploadFragment.OnFinalPostClick(dataInUploadPicFrag);
+//
+//                }
+//
+//                else{
+//
+//                    Snackbar snackbar = Snackbar.make(rootView,"Please upload atleast one image",Snackbar.LENGTH_LONG);
+//                    snackbar.show();
+//                }
 
             }
         });

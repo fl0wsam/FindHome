@@ -58,6 +58,7 @@ dependencies {
     //wasabeef animaotors
     implementation 'jp.wasabeef:recyclerview-animators:2.2.0'
     implementation 'androidx.drawerlayout:drawerlayout:1.1.1'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
     testImplementation 'junit:junit:4.13.2'
 
     implementation 'com.cloudinary:cloudinary-android:1.24.0'

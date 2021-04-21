@@ -37,7 +37,7 @@ public class MyFirebaseRecylerAdapter extends FirebaseRecyclerAdapter<House, MyF
             Bitmap bitmap = null;
             for(String url : urls)
             {
-                Log.d("Jashwanth URL is : ", url);
+                //Log.d("Jashwanth URL is : ", url);
                 bitmap = MyUtility.downloadImageusingHTTPGetRequest(url);
                 if (bitmap != null)
                 {

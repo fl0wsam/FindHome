@@ -68,7 +68,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        SharedPreferences sharedPreferences = getSharedPreferences("HappyNestLoginDetails",
+        SharedPreferences sharedPreferences = getSharedPreferences("FindHomeLoginDetails",
                 Context.MODE_PRIVATE);
 
         View navHeaderView = navigationView.getHeaderView(0);
@@ -156,7 +156,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
         else if(id == R.id.search_your_property) {
             Log.d("start list_your_home", "Start the List Your Home Activity");
-            //intent = new Intent(NavigationDrawer.this, SearchYourHome.class);
+            intent = new Intent(NavigationDrawer.this, SearchYourHome.class);
             startActivity(intent);
 
         }

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class happynestdata {
+public class FindHomedata {
     List<Map<String,Object>> houseList;
     DatabaseReference mRef;
     // Query mRef;
@@ -146,9 +146,9 @@ public class happynestdata {
         });
     }
 
-    public happynestdata() {
+    public FindHomedata() {
         houseList = new ArrayList<Map<String,Object>>();
-        mRef = FirebaseDatabase.getInstance().getReference().child("happynest").getRef();
+        mRef = FirebaseDatabase.getInstance().getReference().child("FindHome").getRef();
         myFirebaseRecylerAdapter = null;
         mContext = null;
     }
