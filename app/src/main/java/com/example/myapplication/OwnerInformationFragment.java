@@ -70,9 +70,6 @@ public class OwnerInformationFragment extends Fragment {
         addressLine2 = (EditText)rootView.findViewById(R.id.AddressLine2);
         cityInfo = (EditText)rootView.findViewById(R.id.ownercity);
         continueButton = (Button)rootView.findViewById(R.id.owner_details_continue_button);
-        //Added by Sumanth on 04/09/2017 1:10PM
-//        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-//        continueButton.startAnimation(myAnim);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

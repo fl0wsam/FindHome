@@ -137,12 +137,19 @@ public class ListYourHome extends AppCompatActivity implements OnContinueClickOw
         }
         else if(id == R.id.search_your_property) {
             Log.d("start search_your_home", "Start the Search Your Home Activity");
-            //intent = new Intent(ListYourHome.this, SearchYourHome.class);
+            intent = new Intent(ListYourHome.this, SearchYourHome.class);
             startActivity(intent);
         } else if(id == R.id.about_us) {
 
             Log.d("About us", "Start About us Activity");
-            //intent = new Intent(ListYourHome.this, AboutActivity.class);
+            intent = new Intent(ListYourHome.this, Aboutus.class);
+            startActivity(intent);
+
+        }else if(id == R.id.go_to_map) {
+
+
+            Log.d("About us", "Start About us Activity");
+            intent = new Intent(ListYourHome.this, MapsActivity.class);
             startActivity(intent);
 
         } else if(id == R.id.logout_user) {
@@ -156,15 +163,4 @@ public class ListYourHome extends AppCompatActivity implements OnContinueClickOw
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//    //    Toast.makeText(getApplicationContext(),"Happy Nest resumed on Listing Property Activity",Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//    //    Toast.makeText(getApplicationContext(),"Happy Nest paused on Listing Property Activity",Toast.LENGTH_SHORT).show();
-//    }
 }

@@ -137,9 +137,6 @@ public class MyFirebaseRecylerAdapter extends FirebaseRecyclerAdapter<House, MyF
         public  void bindHomeData(final House home) {
             Log.d("bindHomeData: ", "Home name is : "+ (String)home.getProjectname());
             title.setText((String)home.getProjectname());
-            //   imageview.setImageResource((Integer)movie.getImage());
-            //   imageview.setImageURI(movie.getUrl());
-//            description.setText((String)home.getDescription());
             addressInfo.setText((String) home.getAddressLine1());
             cityInfo.setText((String) home.getOwnerCity());
             bedrrominfo.setText("Bedrooms: "+(String) home.getBedroom());

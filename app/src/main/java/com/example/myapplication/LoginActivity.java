@@ -59,8 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
 
         mAuth = FirebaseAuth.getInstance();
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -79,21 +77,6 @@ public class LoginActivity extends AppCompatActivity {
         userNameET = (EditText)findViewById(R.id.edit_text_email);
         passwordET = (EditText)findViewById(R.id.edit_text_password);
         Button login = (Button) findViewById(R.id.loginbutton);
-/*        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(
-                        AuthUI.getInstance()
-                                .createSignInIntentBuilder()
-                                .setIsSmartLockEnabled(false)
-                               *//* .setProviders(Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                        new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
-                                        ))*//*
-                                .build(),
-                        RC_SIGN_IN);
-               // startActivityForResult(AuthUI.getInstance().);
-            }
-        });*/
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,44 +238,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == RC_SIGN_IN) {
-//            IdpResponse response = IdpResponse.fromResultIntent(data);
-//
-//            // Successfully signed in
-//            if (resultCode == ResultCodes.OK) {
-//                Log.d("LoginActivity", "onActivityResult: Loggedin succesfully");
-//                sharedPreferences = getSharedPreferences("HappyNestLoginDetails", Context.MODE_PRIVATE);
-//
-//
-//                Intent myIntent = new Intent(LoginActivity.this, NavigationDrawer.class); //Replace MainActivity.class with your launcher class from previous assignments
-//                LoginActivity.this.startActivity(myIntent);
-//
-//                return;
-//            } else {
-//                // Sign in failed
-//                if (response == null) {
-//                    // User pressed back button
-//                    showSnackbar("Sign in cancelled");
-//                    return;
-//                }
-//
-//                if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
-//                    showSnackbar("No network connnection");
-//                    return;
-//                }
-//
-//                if (response.getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
-//                    showSnackbar("Error occured while signing in");
-//                    return;
-//                }
-//            }
-//
-//            showSnackbar("Error occured while signing in");
-//        }
-//    }
 
     public void showSnackbar(String s){
         Snackbar snackbar = Snackbar.make(userNameET,s,Snackbar.LENGTH_LONG);

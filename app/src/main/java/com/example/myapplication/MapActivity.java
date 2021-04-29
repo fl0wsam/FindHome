@@ -57,22 +57,9 @@ public class MapActivity extends FragmentActivity implements OnPostClickInAddito
         Log.d(TAG, "onCreate:ownerInfoInMap from the ListYourHome Activity is "+ownerInfoInMap.get("addressLine1"));
         Log.d("MapActivity", "onCreate: Address obtained is" + getAddress);
 
-        /*mapContinueButton = (Button)findViewById(R.id.map_continue_button_activity);
-        mapContinueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mapContinueButton.setVisibility(View.GONE);
-                getSupportFragmentManager().beginTransaction().replace(R.id.map_main_relativelayout,
-                        AdditionalPropertyInfo.newInstance(R.id.additional_property_info,ownerInfoInMap)).addToBackStack("AdditionalPropertyInfo").commit();
-            }
-        });*/
     }
 
-//        @Override
-//        public void onBackPressed() {
-//            getSupportFragmentManager().popBackStack();
-//            super.onBackPressed();
-//        }
+//
 
     @Override
     public void OnPostClick() {
@@ -121,15 +108,4 @@ public class MapActivity extends FragmentActivity implements OnPostClickInAddito
         return true;
     }
 
-//        @Override
-//        protected void onResume() {
-//            super.onResume();
-//       //     Toast.makeText(getApplicationContext(),"Happy Nest resumed on Map and Post Property Activity",Toast.LENGTH_SHORT).show();
-//        }
-//
-//        @Override
-//        protected void onPause() {
-//            super.onPause();
-//       //     Toast.makeText(getApplicationContext(),"Happy Nest paused on Map and Post Property Activity",Toast.LENGTH_SHORT).show();
-//        }
 }

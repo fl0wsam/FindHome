@@ -137,7 +137,7 @@
             android:layout_marginLeft="104dp"
             android:layout_marginBottom="-2dp"
             android:text="Security"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -151,7 +151,7 @@
             android:layout_marginLeft="102dp"
             android:layout_marginBottom="246dp"
             android:text="Furnishment"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -165,7 +165,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginBottom="216dp"
             android:text="Internet"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -179,7 +179,7 @@
             android:layout_marginLeft="102dp"
             android:layout_marginBottom="152dp"
             android:text="Recreation Services"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -193,7 +193,7 @@
             android:layout_marginLeft="1dp"
             android:layout_marginBottom="33dp"
             android:text="Parking"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <Button

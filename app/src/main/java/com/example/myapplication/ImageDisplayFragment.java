@@ -58,21 +58,6 @@ public class ImageDisplayFragment extends Fragment {
         viewPager.setAdapter(customSwipeAdapter);
         viewPager.setCurrentItem(0);
 
-        /*viewPager .setPageTransformer (false , new
-                ViewPager . PageTransformer () {
-
-
-                    @Override
-                    public void transformPage(View page, float position) {
-                        final float normalized_position =
-                                Math . abs ( Math . abs ( position ) -1) ;
-                        page . setScaleX ( normalized_position /2 + 0.5f);
-                        page . setScaleY ( normalized_position /2 + 0.5f);
-                    }
-                });
-*/
-//        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-//        wanttocontactbutton.startAnimation(myAnim);
         wanttocontactbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -76,34 +76,17 @@ public class ContactInfoFragment extends Fragment {
         addToContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* ContentValues values = new ContentValues();
-                values.put(ContactsContract.Data.RAW_CONTACT_ID, 001);
-                values.put(Data.MIMETYPE, Phone.CONTENT_ITEM_TYPE);
-                values.put(Phone.NUMBER, mobileFromDb);
-                values.put(Phone.TYPE, Phone.TYPE_CUSTOM);
-                values.put(Phone.LABEL, nameFromDb);
-                Uri dataUri = getContext().getContentResolver().insert(android.provider.ContactsContract.Data.CONTENT_URI, values);
-                Toast.makeText(getContext(), "Added to the contact list", Toast.LENGTH_LONG).show();*/
                 ArrayList<ContentValues> data = new ArrayList<ContentValues>();
-              /*  ContentValues row1 = new ContentValues();
-                row1.put(Data.MIMETYPE, Organization.CONTENT_ITEM_TYPE);
-                row1.put(Organization.COMPANY, "HappyNest");
-                data.add(row1);*/
                 ContentValues row1 = new ContentValues();
-                /* name Info */
-/*                row1.put(Data.MIMETYPE, StructuredName.CONTENT_ITEM_TYPE);
-                row1.put(StructuredName.DISPLAY_NAME, nameFromDb);*/
                 row1.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE);
                 row1.put(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME, nameFromDb);
                 row1.put(ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME, nameFromDb);
                 row1.put(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME, nameFromDb);
                 row1.put(ContactsContract.CommonDataKinds.StructuredName.PREFIX, nameFromDb);
                 row1.put(ContactsContract.CommonDataKinds.StructuredName.SUFFIX, nameFromDb);
-                // row1.put(ContactsContract.Intents.Insert.NAME, nameFromDb);
                 data.add(row1);
                 ContentValues row2 = new ContentValues();
                 row2.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Email.CONTENT_ITEM_TYPE);
-                /*row2.put(Email.TYPE, Email.TYPE_CUSTOM);*/
                 row2.put(ContactsContract.CommonDataKinds.Email.DATA, emailFromDb);
                 data.add(row2);
                 /* Phone Number */
@@ -112,8 +95,6 @@ public class ContactInfoFragment extends Fragment {
                 row3.put(ContactsContract.Data.MIMETYPE, ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE);
                 row3.put(ContactsContract.CommonDataKinds.Phone.NUMBER, mobileFromDb);
                 row3.put(ContactsContract.CommonDataKinds.Phone.TYPE, ContactsContract.CommonDataKinds.Phone.TYPE_CUSTOM);
-                /*row3.put(Phone.DISPLAY_NAME, nameFromDb);*/
-                /*row3.put(Phone.LABEL, nameFromDb);*/
                 data.add(row3);
                 Intent intent = new Intent(Intent.ACTION_INSERT, ContactsContract.Contacts.CONTENT_URI);
                 intent.putParcelableArrayListExtra(ContactsContract.Intents.Insert.DATA, data);

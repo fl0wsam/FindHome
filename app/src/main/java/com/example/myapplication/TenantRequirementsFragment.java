@@ -167,14 +167,9 @@ public class TenantRequirementsFragment extends Fragment {
             }
         });
 
-//        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-//        searchButton.startAnimation(myAnim);
-
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), ShowHouses.class);
-//                startActivity(intent);
                 tenantrequirements.put("location",wheredoyouwanttolive.getText().toString());
                 tenantrequirements.put("minbudget",minBudget.getText().toString());
                 tenantrequirements.put("maxbudget",maxBudget.getText().toString());

@@ -57,6 +57,8 @@ public class Housesbeta extends AppCompatActivity {
             newString= (String) savedInstanceState.getSerializable("streetName");
         }
 
+        newString = newString.replace(' ','-');
+
         mDatabase = FirebaseDatabase.getInstance().getReference("kijiji");
         mDatabase.keepSynced(true);
 
@@ -71,6 +73,7 @@ public class Housesbeta extends AppCompatActivity {
         new Content().execute();
 
         Intent intent = new Intent(this,ShowHouses.class);
+        intent.putExtra("streetName",newString);
         startActivity(intent);
 
 

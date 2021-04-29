@@ -55,14 +55,6 @@ public class PropDetailScrollingActivity extends AppCompatActivity implements On
 
         dataInPropDetailScrollingActivity = (HashMap<String,Object>)getIntent().getSerializableExtra("dataFromSearchActivityToPropCoorinatorLayout");
         Log.d(TAG, "onCreate: data in PropDetailScrollingActivity owner name "+dataInPropDetailScrollingActivity.get("ownerName"));
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
         collapsingToolbar.setTitle((String)dataInPropDetailScrollingActivity.get("projectname"));
@@ -151,12 +143,12 @@ public class PropDetailScrollingActivity extends AppCompatActivity implements On
     protected void onResume() {
         mapView.onResume();
         super.onResume();
-//     //   Toast.makeText(getApplicationContext(),"Happy Nest resumed on Property Details Activity",Toast.LENGTH_SHORT).show();
+//
     }
     //
     @Override
     protected void onPause() {
         super.onPause();
-//    //    Toast.makeText(getApplicationContext(),"Happy Nest paused on Property Details Activity",Toast.LENGTH_SHORT).show();
+//
     }
 }

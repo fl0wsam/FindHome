@@ -60,21 +60,17 @@ public class myRecycleView extends Fragment {
         Log.d("Task1", "Oncreateview function moviedata function");
         mRecycleView = (RecyclerView)rootview.findViewById(R.id.recycleview2);
         // specify an adapter
-        //  mRecycleViewAdapter = new MyRecycleViewAdapter(getContext(), moviedata.getMoviesList());
         Log.d("Task1", "Oncreateview function new RecycleAdapter");
 
         DatabaseReference childref = FirebaseDatabase.getInstance().getReference()
                 .child("FindHome").getRef();
-        //childref.orderByChild("ownerCity").equalTo("Syracuse");
-        //Query queryRef = childref.orderByChild("ownerCity").equalTo("Syracuse");
 
 
 
 
 
 
-//        myFirebaseRecylerAdapter = new MyFirebaseRecylerAdapter(House.class, R.layout.listrow,
-//                MyFirebaseRecylerAdapter.houseViewHolder.class, childref , getContext());
+//
         myFirebaseRecylerAdapter = new MyFirebaseRecylerAdapter(House.class, R.layout.cardviewlayout,
                 MyFirebaseRecylerAdapter.houseViewHolder.class, childref , getContext());
         if (housedata.getSize() == 0) {
@@ -98,7 +94,6 @@ public class myRecycleView extends Fragment {
             public void onItemClick(final View view, int position) {
 
                 Log.d("Task", "onItemClick: Enter of onItemClick method ");
-                // handle=navigationlistener.naviagteToCardsSelected(position, movie);
                 HashMap<String, Object> movie = (HashMap<String, Object>) housedata.getItem(position);
                 String id = (String) movie.get("projectname");
                 Log.d("Clicked Recycle ID: ", id);
@@ -159,16 +154,11 @@ public class myRecycleView extends Fragment {
         mRecycleView.setAdapter(myFirebaseRecylerAdapter);
 
 
-//        itemAnimation();
-//        adapterAnimation();
         return rootview;
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//          if (menu.findItem(R.id.recycle_fragment_menu) == null) {
-//            inflater.inflate(R.menu.recycle_fragment_toolbar, menu);
-//          }
         SearchView search = null;
 
         if (menu.findItem(R.id.recycle_fragment_actionview) == null) {
@@ -220,12 +210,6 @@ public class myRecycleView extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    //    private void defaultAnimation(){
-//        DefaultItemAnimator animator = new DefaultItemAnimator();
-//        animator.setAddDuration(5000);
-//        animator.setRemoveDuration(3000);
-//        mRecycleView.setItemAnimator(animator);
-//    }
     public void adapterAnimation(){
         AlphaInAnimationAdapter alphaInAnimationAdapter = new AlphaInAnimationAdapter(myFirebaseRecylerAdapter);
         ScaleInAnimationAdapter scaleInAnimationAdapter = new ScaleInAnimationAdapter(alphaInAnimationAdapter);

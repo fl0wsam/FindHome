@@ -17,14 +17,6 @@ public class FinalFragmentSuccess extends Fragment {
     }
     public static FinalFragmentSuccess newInstance(int section_number,HashMap<String, Object> data) {
         FinalFragmentSuccess fragment = new FinalFragmentSuccess();
-//        Log.d(TAG, "newInstance: ownerName is "+data.get("ownerName"));
-//        Log.d(TAG, "newInstance: mailid is "+data.get("ownerName"));
-//        Log.d(TAG, "newInstance: contactnum is "+data.get("contactnum"));
-//        Log.d(TAG, "newInstance: projectname is "+data.get("projectname"));
-//        Log.d(TAG, "newInstance: addressLine1 is "+data.get("addressLine1"));
-//        Log.d(TAG, "newInstance: addressLine2 is "+data.get("addressLine2"));
-//        Log.d(TAG, "newInstance: ownerCity is "+data.get("ownerCity"));
-//        Log.d(TAG, "newInstance: ownerCity is "+data.get("ownerCity"));
         dataInFinalFrag = data;
         Bundle args = new Bundle();
         args.putSerializable(ARG_SECTIONNUMBER, section_number);

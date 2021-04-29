@@ -53,7 +53,7 @@ public class SearchYourHome extends AppCompatActivity implements OnSearchInRequi
         newSearch = new HashMap<String ,Object>();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_search_your_home);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -92,7 +92,14 @@ public class SearchYourHome extends AppCompatActivity implements OnSearchInRequi
 
         } else if(id == R.id.about_us) {
             Log.d("About us", "Start About us Activity");
-            //intent = new Intent(SearchYourHome.this, AboutActivity.class);
+            intent = new Intent(SearchYourHome.this, Aboutus.class);
+            startActivity(intent);
+
+        }else if(id == R.id.go_to_map) {
+
+
+            Log.d("About us", "Start About us Activity");
+            intent = new Intent(SearchYourHome.this, MapsActivity.class);
             startActivity(intent);
 
         } else if(id == R.id.logout_user) {

@@ -163,7 +163,7 @@
             android:layout_above="@+id/furnishmentcheckbox"
             android:layout_centerHorizontal="true"
             android:text="Security"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -174,7 +174,7 @@
             android:layout_alignStart="@+id/securityhead"
             android:layout_alignLeft="@+id/securityhead"
             android:text="Furnishment"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -185,7 +185,7 @@
             android:layout_alignStart="@+id/furnishmenthead"
             android:layout_alignLeft="@+id/furnishmenthead"
             android:text="Internet"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -196,7 +196,7 @@
             android:layout_alignStart="@+id/internethead"
             android:layout_alignLeft="@+id/internethead"
             android:text="Recreation Services"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <TextView
@@ -207,7 +207,7 @@
             android:layout_alignStart="@+id/recreationhead"
             android:layout_alignLeft="@+id/recreationhead"
             android:text="Parking"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
         <ImageButton

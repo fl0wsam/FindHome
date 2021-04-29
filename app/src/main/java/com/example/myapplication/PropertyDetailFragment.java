@@ -87,8 +87,6 @@ public class PropertyDetailFragment extends Fragment {
         if (amenitiesset != null) {
             amenities.setText(amenitiesset);
         }
-//        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-//        OnContButton.startAnimation(myAnim);
         OnContButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

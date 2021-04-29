@@ -22,11 +22,24 @@ public class ShowHouses extends AppCompatActivity {
 
     private RecyclerView mBlogList;
     private DatabaseReference mDatabase;
+    String newString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_houses);
+
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                newString= null;
+            } else {
+                newString= extras.getString("streetName");
+            }
+        } else {
+            newString= (String) savedInstanceState.getSerializable("streetName");
+        }
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("kijiji");
         mDatabase.keepSynced(true);

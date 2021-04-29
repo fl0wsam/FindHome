@@ -91,11 +91,6 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
         else{
             navigationTextView.setText("");
         }
-        //navigationTextView.setText("xyz@gmail.com");
-
-//        getSupportFragmentManager().beginTransaction().replace(
-//                R.id.content_activity_navigation_relative_layout,
-//                InitFragmentNavigationDrawer.newInstance(R.id.init_fragment_navigation_drawer_relative_layout)).commit();
     }
 
     @Override
@@ -141,17 +136,6 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
             intent = new Intent(NavigationDrawer.this, ListYourHome.class);
             startActivity(intent);
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//                ActivityOptionsCompat options = ActivityOptionsCompat.
-//                        makeSceneTransitionAnimation(this,this.mAppBar, "testTransition");
-//                startActivity(intent, options.toBundle());
-//            }
-//
-//
-//
-//            else {
-//                startActivity(intent);
-//            }
         }
 
         else if(id == R.id.search_your_property) {
@@ -164,7 +148,7 @@ public class NavigationDrawer extends AppCompatActivity implements NavigationVie
 
 
             Log.d("About us", "Start About us Activity");
-            intent = new Intent(NavigationDrawer.this, NewHome.class);
+            intent = new Intent(NavigationDrawer.this, Aboutus.class);
             startActivity(intent);
 
         }
