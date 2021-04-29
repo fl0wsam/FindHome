@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -172,6 +173,8 @@ public class TenantRequirementsFragment extends Fragment {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ShowHouses.class);
+//                startActivity(intent);
                 tenantrequirements.put("location",wheredoyouwanttolive.getText().toString());
                 tenantrequirements.put("minbudget",minBudget.getText().toString());
                 tenantrequirements.put("maxbudget",maxBudget.getText().toString());

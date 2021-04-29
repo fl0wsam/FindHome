@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".PropDetailScrollingActivity"></activity>
+        <activity android:name=".ShowHouses"></activity>
+        <activity android:name=".PropDetailScrollingActivity" />
         <activity android:name=".SearchYourHome" />
         <activity android:name=".NewHome" />
         <activity android:name=".MapActivity" />

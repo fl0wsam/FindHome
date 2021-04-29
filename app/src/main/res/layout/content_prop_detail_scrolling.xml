@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,46 +13,53 @@
          android:text="@string/large_text" />-->
 
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/contact_info_layout"
         android:layout_width="match_parent"
         android:layout_height="580dp">
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_below="@+id/beadroomhead"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="110dp"
+            android:layout_marginRight="110dp"
             android:text="About home "
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FF9800"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:id="@+id/textView3" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/beadroomhead"
             android:layout_width="150dp"
             android:layout_height="30dp"
+            android:layout_below="@+id/pricehead"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="101dp"
+            android:layout_marginRight="101dp"
             android:text="Bedrooms"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FF9800"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_below="@+id/pricehead" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/pricehead"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
 
 
-            android:layout_marginLeft="36dp"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="159dp"
+            android:layout_marginLeft="159dp"
             android:layout_marginTop="102dp"
             android:text="Price"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FF9800"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -60,21 +67,25 @@
             android:id="@+id/amenitieshead"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:text="Amenities"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_below="@+id/descriptiondata"
             android:layout_marginTop="11dp"
-            android:layout_below="@+id/descriptiondata" />
+            android:text="Amenities"
+            android:textColor="#FF9800"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_below="@+id/descriptiondata"
-            android:layout_marginTop="11dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="98dp"
+            android:layout_marginRight="98dp"
             android:text="Amenities"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="#FF9800"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -113,27 +124,32 @@
             android:textColor="@android:color/black"
             android:textSize="20dp"
             android:layout_below="@+id/amenitieshead" />
+
         <Button
+            android:id="@+id/button2"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:text="Continue"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
-            android:id="@+id/button2"
             android:layout_below="@+id/cityindetailhomelayout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:background="#FF9800"
+            android:text="Continue"
+            android:textColor="@android:color/white" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textStyle="bold"
-            android:text="Address"
             android:layout_below="@+id/amenitiesdata"
-            android:layout_marginTop="16dp"
-            android:id="@+id/textView4" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginRight="85dp"
+            android:text="Address"
+            android:textColor="#FF9800"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="300dp"

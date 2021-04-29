@@ -4,38 +4,43 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <androidx.cardview.widget.CardView
         android:id="@+id/mycardview"
-        app:cardCornerRadius ="10dp"
-        app:cardElevation ="10dp"
-        app:cardBackgroundColor="@color/colorPrimary"
-        app:cardUseCompatPadding ="true"
-        android:layout_width ="match_parent"
-        android:layout_height ="200dp">
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="#FF9800"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardUseCompatPadding="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/cardview_image"
-                android:layout_marginLeft="20dp"
                 android:layout_width="142dp"
                 android:layout_height="153dp"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="3dp"
                 android:layout_weight="3"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/homename"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Property Name"
                     android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
                     android:gravity="center_vertical"
+                    android:text="Property Name"
                     android:textColor="@android:color/background_dark"
                     android:textSize="24dp" />
 
@@ -48,6 +53,7 @@
                     android:text="Address Info"
                     android:textColor="@android:color/white"
                     android:textSize="20dp" />
+
                 <TextView
                     android:id="@+id/addessInfo2"
                     android:layout_width="match_parent"
@@ -57,6 +63,7 @@
                     android:text="City"
                     android:textColor="@android:color/white"
                     android:textSize="20dp" />
+
                 <TextView
                     android:id="@+id/bedroomcount"
                     android:layout_width="match_parent"

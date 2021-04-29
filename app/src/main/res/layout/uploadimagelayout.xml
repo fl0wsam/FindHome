@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="580dp"
         android:id="@+id/upload_picture_fragment_layout">
@@ -14,24 +14,25 @@
             android:id="@+id/uploadimagehead"
             android:layout_width="300dp"
             android:layout_height="30dp"
-            android:layout_marginTop="26dp"
-            android:text="Upload Pictures of Your Property"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20dp"
-            android:textStyle="bold"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="27dp"
-            android:layout_marginEnd="27dp" />
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="-19dp"
+            android:layout_marginRight="-19dp"
+            android:text="Upload Pictures"
+            android:textColor="#FF9800"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="100dp"
             android:id="@+id/browseCameraOrGallery"
+            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="35dp"
             android:layout_below="@+id/uploadimagehead"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            tools:srcCompat="@android:drawable/ic_menu_camera" />
 
         <ImageView
             android:layout_width="240dp"
@@ -39,13 +40,18 @@
             android:id="@+id/uploadedimage"
             android:layout_below="@+id/browseCameraOrGallery"
             android:layout_centerHorizontal="true" />
+
         <Button
+            android:id="@+id/finalpostbuton"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:text="Post"
-            android:id="@+id/finalpostbuton"
-            android:background="@color/colorPrimary"
             android:layout_below="@+id/uploadedimage"
-            android:layout_marginTop="12dp" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="152dp"
+            android:layout_marginLeft="152dp"
+            android:layout_marginTop="28dp"
+            android:background="#FF9800"
+            android:text="Post" />
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

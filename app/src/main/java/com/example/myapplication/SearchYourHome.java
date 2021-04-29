@@ -106,17 +106,4 @@ public class SearchYourHome extends AppCompatActivity implements OnSearchInRequi
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Toast.makeText(getApplicationContext(),"Happy Nest resumed on Search Home Activity",Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        Toast.makeText(getApplicationContext(),"Happy Nest paused on Search Home Activity",Toast.LENGTH_SHORT).show();
-//    }
-
 }

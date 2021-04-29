@@ -36,7 +36,7 @@ public class PropDetailScrollingActivity extends AppCompatActivity implements On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prop_detail_scrolling);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
         mapView = (MapView)findViewById(R.id.mapview_cooridinatorlayout);

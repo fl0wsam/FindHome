@@ -64,7 +64,7 @@ public class myRecycleView extends Fragment {
         Log.d("Task1", "Oncreateview function new RecycleAdapter");
 
         DatabaseReference childref = FirebaseDatabase.getInstance().getReference()
-                .child("happynest").getRef();
+                .child("FindHome").getRef();
         //childref.orderByChild("ownerCity").equalTo("Syracuse");
         //Query queryRef = childref.orderByChild("ownerCity").equalTo("Syracuse");
 

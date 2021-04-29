@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="580dp"
         android:id="@+id/owner_details_fragment_layout">
@@ -90,14 +90,14 @@
             android:layout_alignStart="@+id/AddressLine2" />
 
         <Button
+            android:id="@+id/owner_details_continue_button"
             android:layout_width="140dp"
             android:layout_height="50dp"
-            android:text="Continue"
-            android:textColor="@android:color/white"
-            android:background="@color/colorPrimary"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="11dp"
-            android:id="@+id/owner_details_continue_button"/>
+            android:background="#FF9800"
+            android:text="Continue"
+            android:textColor="@android:color/white" />
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

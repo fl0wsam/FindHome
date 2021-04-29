@@ -180,6 +180,7 @@ public void onMyLocationClick(@NonNull Location location) {
                 String s = /*longitude + "\n" + latitude +
                         "\n\n*/"My Currrent Street is: " + StreetName;
                 Intent goToHouse = new Intent(getApplicationContext(), Housesbeta.class);
+                goToHouse.putExtra("streetName", StreetName);
                 startActivity(goToHouse);
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
                 //Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
