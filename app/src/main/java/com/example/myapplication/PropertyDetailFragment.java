@@ -75,18 +75,18 @@ public class PropertyDetailFragment extends Fragment {
         ArrayList<String> amenitiesListFromDb = (ArrayList<String>) houseInDetailFragment.get("amenities");
         String amenitiesset = "";
 
-        if (amenities != null) {
-            for (int i = 0; i < amenitiesListFromDb.size(); i++) {
-                amenitiesset += amenitiesListFromDb.get(i);
-                if (i != amenitiesListFromDb.size() - 1) {
-                    amenitiesset += ", ";
-                }
-            }
-        }
-
-        if (amenitiesset != null) {
-            amenities.setText(amenitiesset);
-        }
+//        if (amenities != null) {
+//            for (int i = 0; i < amenitiesListFromDb.size(); i++) {
+//                amenitiesset += amenitiesListFromDb.get(i);
+//                if (i != amenitiesListFromDb.size() - 1) {
+//                    amenitiesset += ", ";
+//                }
+//            }
+//        }
+//
+//        if (amenitiesset != null) {
+//            amenities.setText(amenitiesset);
+//        }
         OnContButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -41,8 +41,8 @@ public class CustomSwipeAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-
-        return imageArray.size();
+        return 0;
+//        return imageArray.size();
     }
 
 

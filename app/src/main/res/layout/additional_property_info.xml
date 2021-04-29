@@ -82,7 +82,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="55dp"
             android:layout_marginRight="55dp"
-            android:layout_marginBottom="-2dp" />
+            android:layout_marginBottom="-2dp"
+            android:textColor="#FFFFFF" />
 
         <CheckBox
             android:id="@+id/securitycheckbox"
@@ -136,7 +137,8 @@
             android:layout_marginStart="-12dp"
             android:layout_marginLeft="-12dp"
             android:layout_marginTop="27dp"
-            android:hint="Enter manually or press to speak" />
+            android:hint="Enter manually or press to speak"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/continue_button_in_additionalinfofrag"
@@ -212,10 +214,14 @@
 
         <ImageButton
             android:id="@+id/voiceTotextButton"
-            android:layout_width="20dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="129dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="127dp"
             android:src="@android:drawable/ic_btn_speak_now" />
 
     </RelativeLayout>
