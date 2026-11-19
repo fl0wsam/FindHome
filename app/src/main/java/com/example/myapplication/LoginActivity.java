@@ -14,10 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.ErrorCodes;
-import com.firebase.ui.auth.IdpResponse;
-import com.firebase.ui.auth.ResultCodes;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -170,36 +166,19 @@ public class LoginActivity extends AppCompatActivity {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            // Successfully signed in
-            if (resultCode == ResultCodes.OK) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d("LoginActivity", "onActivityResult: Loggedin succesfully");
                 sharedPreferences = getSharedPreferences("FindHomeLoginDetails", Context.MODE_PRIVATE);
-
-
-                Intent myIntent = new Intent(LoginActivity.this, NavigationDrawer.class); //Replace MainActivity.class with your launcher class from previous assignments
+                if (account != null && account.getIdToken() != null) {
+                    firebaseAuthWithGoogle(account.getIdToken());
+                }
+                Intent myIntent = new Intent(LoginActivity.this, NavigationDrawer.class);
                 LoginActivity.this.startActivity(myIntent);
-
-                return;
-            } else {
-                // Sign in failed
-                if (response == null) {
-                    // User pressed back button
-                    showSnackbar("Sign in cancelled");
-                    return;
-                }
-
-                if (response.getErrorCode() == ErrorCodes.NO_NETWORK) {
-                    showSnackbar("No network connnection");
-                    return;
-                }
-
-                if (response.getErrorCode() == ErrorCodes.UNKNOWN_ERROR) {
-                    showSnackbar("Error occured while signing in");
-                    return;
-                }
+            } catch (ApiException e) {
+                Log.w("LoginActivity", "signInResult:failed code=" + e.getStatusCode());
+                showSnackbar("Sign in failed");
             }
         }
     }

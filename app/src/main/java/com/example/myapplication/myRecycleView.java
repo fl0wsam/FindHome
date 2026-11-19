@@ -219,8 +219,7 @@ public class myRecycleView extends Fragment {
     }
 
     public void itemAnimation(){
-        ScaleInAnimator scaleInAnimation = new ScaleInAnimator();
-        scaleInAnimation.setInterpolator(new OvershootInterpolator());
+        ScaleInAnimator scaleInAnimation = new ScaleInAnimator(new OvershootInterpolator());
         scaleInAnimation.setAddDuration(100);
         scaleInAnimation.setRemoveDuration(100);
         mRecycleView.setItemAnimator(scaleInAnimation);

@@ -14,8 +14,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/search_your_home_relativelayout"
-        tools:context="com.SyracuseUniversity.jashwanthreddy.happynest.SearchYourHome">
+        android:id="@+id/search_your_home_relativelayout">
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

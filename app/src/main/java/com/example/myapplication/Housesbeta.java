@@ -29,7 +29,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.fabric.sdk.android.services.concurrency.AsyncTask;
+import android.os.AsyncTask;
 
 public class Housesbeta extends AppCompatActivity {
 

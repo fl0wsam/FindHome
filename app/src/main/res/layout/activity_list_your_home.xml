@@ -16,8 +16,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list_your_home_activity_relative_layout"
-        tools:context="com.SyracuseUniversity.jashwanthreddy.happynest.ListYourHome">
+        android:id="@+id/list_your_home_activity_relative_layout">
 
 
         <com.google.android.material.appbar.AppBarLayout

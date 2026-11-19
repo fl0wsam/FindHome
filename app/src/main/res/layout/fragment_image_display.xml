@@ -7,8 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="580dp"
-        android:id="@+id/frag_image_display"
-        tools:context="com.SyracuseUniversity.jashwanthreddy.happynest.ImageDisplayFragment">
+        android:id="@+id/frag_image_display">
 
         <!-- TODO: Update blank fragment layout -->
 

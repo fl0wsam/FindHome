@@ -2,8 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/contextual_or_pop_menu"
-    tools:context="com.SyracuseUniversity.jashwanthreddy.assignment5.task2">
+    android:id="@+id/contextual_or_pop_menu">
     <item
         android:id="@+id/contextual_or_pop_menu_copy"
         app:showAsAction="always"
