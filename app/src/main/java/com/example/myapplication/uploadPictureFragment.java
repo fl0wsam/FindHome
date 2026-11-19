@@ -47,9 +47,9 @@ public class uploadPictureFragment extends Fragment {
     String filePath;
     Map config = new HashMap();
     private void configCloudinary() {
-        config.put("cloud_name", "dxacgqapm");
-        config.put("api_key", "343651294157222");
-        config.put("api_secret", "NbbYFUflT2Hsi2XG9AylTF4tsSg");
+        config.put("cloud_name", "YOUR_CLOUD_NAME");
+        config.put("api_key", "YOUR_CLOUDINARY_API_KEY");
+        config.put("api_secret", "YOUR_CLOUDINARY_API_SECRET");
         MediaManager.init(context, config);
     }
 
@@ -217,10 +217,9 @@ public class uploadPictureFragment extends Fragment {
         finalPostButton = (Button) rootView.findViewById(R.id.finalpostbuton);
         onSuccessPostInCameraUploadFragment = (OnSuccessPostInCameraUploadFragment) rootView.getContext();
         Map config = ObjectUtils.asMap(
-                "cloud_name", "dxacgqapm",
-                "api_key", "343651294157222",
-                "api_secret", "NbbYFUflT2Hsi2XG9AylTF4tsSg");
-        // cloudinary = new Cloudinary("cloudinary://144153289427247:N9vhvyyTDWbXWsYxirsLyk2rrVE@djwozwl0f");
+                "cloud_name", "YOUR_CLOUD_NAME",
+                "api_key", "YOUR_CLOUDINARY_API_KEY",
+                "api_secret", "YOUR_CLOUDINARY_API_SECRET");
         cloudinary = new Cloudinary(config);
         // Api api = cloudinary.api();
         browseGalleryImage.setOnClickListener(new View.OnClickListener() {

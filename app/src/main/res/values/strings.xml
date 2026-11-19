@@ -9,7 +9,7 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="map_key" translatable="false">AIzaSyB2vKnizllmBdjrlMD5Seu4Mrv8qBx0WD8</string>
+    <string name="map_key" translatable="false">YOUR_KEY_HERE</string>
     <string name="title_activity_houses">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -258,7 +258,7 @@
     <!--  Marker Collision  -->
     <string name="marker_collision_label">Marker Collision</string>
     <string name="marker_collision_description">Demonstrates different supported marker collision behaviors.</string>
-    <string name="google_maps_key">"AIzaSyB2vKnizllmBdjrlMD5Seu4Mrv8qBx0WD8"</string>
+    <string name="google_maps_key">"YOUR_KEY_HERE"</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <!-- TODO: Remove or change this placeholder text -->
